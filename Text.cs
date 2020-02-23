@@ -8,5 +8,7 @@ namespace EngProject
 {
     class Text
     {
+        public List<Word> WordsList;
+
     }
 }
