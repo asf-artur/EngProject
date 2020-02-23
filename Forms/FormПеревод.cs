@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EngProject
+namespace EngProject.Forms
 {
-    public partial class Form1 : Form
+    public partial class FormПеревод : Form
     {
-        public Form1()
+        public FormПеревод()
         {
             InitializeComponent();
+        }
+
+        private void FormПеревод_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
