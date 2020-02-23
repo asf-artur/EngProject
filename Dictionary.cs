@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace EngProject
 {
-    class Word
+    class Dictionary
     {
-        public int Paragraph;
-        public string Meaning;
-        public List<String> Translations;
-        public string Chosen;
-
+        public List<String> Translation;
     }
 }
