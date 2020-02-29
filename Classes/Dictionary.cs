@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EngProject.Classes;
 
-namespace EngProject
+namespace EngProject.Classes
 {
-    class Text
+    class Dictionary
     {
         public List<Word> WordsList;
         public Word Get (string s)
