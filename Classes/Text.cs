@@ -22,8 +22,9 @@ namespace EngProject.Classes
 
         public void GetText()
         {
-            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            using (var streamReader = new StreamReader( dir + "\\Txt\\text.txt", encoding:Encoding.ASCII))
+            //var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            //dir = "";
+            using (var streamReader = new StreamReader( "Txt/text.txt", encoding:Encoding.ASCII))
             {
                 text = streamReader.ReadToEnd();
             }

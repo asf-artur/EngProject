@@ -59,15 +59,5 @@ namespace EngProject.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Will software that writes code alter tech’s script?
-        ///It is an axiom of the internet age that almost nothing done by human hand cannot be done better by or with software. But what of the business of writing software itself? Much of it is repetitious, bug-riddled grunt work. Cannot this be made more efficient by software? In fact, cannot code write code? To do this would be to turn the unofficial slogan of Silicon Valley in on itself: software will not only eat the world but software will eat software. This i [остаток строки не уместился]&quot;;.
-        /// </summary>
-        public static string text {
-            get {
-                return ResourceManager.GetString("text", resourceCulture);
-            }
-        }
     }
 }
