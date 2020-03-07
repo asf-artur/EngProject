@@ -15,8 +15,14 @@ namespace EngProject.Classes
 {
     public class TextClass
     {
-        //public List<Word> WordsList;
+        /// <summary>
+        /// Список слов с типом Word
+        /// </summary>
         public ObservableCollection<Word> WordsList;
+        
+        /// <summary>
+        /// Текст одной строкой
+        /// </summary>
         public string Text;
 
         public TextClass()
@@ -25,11 +31,19 @@ namespace EngProject.Classes
             WordsList.CollectionChanged += WordListAdd;
         }
 
+        /// <summary>
+        /// Для события при добавлении нового слова, для того, чтобы заполнить поле Id
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void WordListAdd(object sender, NotifyCollectionChangedEventArgs e)
         {
             WordsList[WordsList.Count - 1].Id = WordsList.Count;
         }
 
+        /// <summary>
+        /// Загрузка текста
+        /// </summary>
         public void GetText()
         {
             using (var streamReader = new StreamReader( "ResFolder\\short_text.txt", encoding:Encoding.Unicode))
@@ -38,6 +52,12 @@ namespace EngProject.Classes
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="wordString"> Слово</param>
+        /// <param name="translationString"> Перевод слова</param>
+        /// <param name="paragraph">Номер параграфа</param>
         public void AddTranslation(string wordString, string translationString, int paragraph)
         {
             var word = WordsList.ToList().Find(c => c.Meaning == wordString);
@@ -49,6 +69,11 @@ namespace EngProject.Classes
             word.Translations.Add(translationString);
         }
 
+        /// <summary>
+        /// Изменение текущего перевода слова
+        /// </summary>
+        /// <param name="wordString">Слово</param>
+        /// <param name="translationString">Перевод слова</param>
         public void ChangeTranslation(string wordString, string translationString)
         {
             var word = WordsList.ToList().Find(c => c.Meaning == wordString);
