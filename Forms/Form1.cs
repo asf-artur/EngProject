@@ -22,7 +22,7 @@ namespace EngProject.Forms
         private void Form1_Load(object sender, EventArgs e)
         {
             var text = new TextClass();
-            text.GetText();
+            text.LoadText();
             richTextBox1.Text = text.Text;
         }
 
