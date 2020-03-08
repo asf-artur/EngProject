@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using EngProject.Classes;
+﻿using EngProject.Classes;
 using NUnit.Framework;
+using System;
+using System.Collections.ObjectModel;
 
 namespace EngProject.Test
 {
@@ -21,7 +15,7 @@ namespace EngProject.Test
         [Test]
         public void Проверка_загрузки()
         {
-            _textClass.GetText();
+            _textClass.LoadText();
         }
 
         [Test]
@@ -29,16 +23,16 @@ namespace EngProject.Test
         {
             var meaning = "meaning";
             var translation = "translation";
-            _textClass.WordsList = new ObservableCollection<Word>() {new Word(1, meaning) };
+            _textClass.WordsList = new ObservableCollection<Word>() { new Word(1, meaning) };
             _textClass.AddTranslation(meaning, translation, 0);
-            Assert.AreEqual(translation ,_textClass.WordsList[0].Chosen);
+            Assert.AreEqual(translation, _textClass.WordsList[0].Chosen);
         }
 
         [Test]
         public void Проверка_события_WordsList()
         {
             _textClass.WordsList.Add(new Word(1, String.Empty));
-            Assert.AreEqual(_textClass.WordsList.Count, _textClass.WordsList[_textClass.WordsList.Count-1].Id);
+            Assert.AreEqual(_textClass.WordsList.Count, _textClass.WordsList[_textClass.WordsList.Count - 1].Id);
         }
     }
 }

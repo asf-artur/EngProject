@@ -1,29 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
-using EngProject.Properties;
-using NUnit.Framework;
 
 namespace EngProject.Classes
 {
     public class TextClass
+        : ITextClass
     {
         /// <summary>
         /// Список слов с типом Word
         /// </summary>
         public ObservableCollection<Word> WordsList;
-        
+
         /// <summary>
         /// Текст одной строкой
         /// </summary>
-        public string Text;
+        public string Text
+        {
+            get => allText;
+        }
+
+        private string allText;
 
         public TextClass()
         {
@@ -44,16 +43,16 @@ namespace EngProject.Classes
         /// <summary>
         /// Загрузка текста
         /// </summary>
-        public void GetText()
+        public void LoadText()
         {
-            using (var streamReader = new StreamReader( "ResFolder\\short_text.txt", encoding:Encoding.Unicode))
+            using (var streamReader = new StreamReader("ResFolder\\short_text.txt", encoding: Encoding.Unicode))
             {
-                Text = streamReader.ReadToEnd();
+                allText = streamReader.ReadToEnd();
             }
         }
 
         /// <summary>
-        /// 
+        /// Добавить перевод
         /// </summary>
         /// <param name="wordString"> Слово</param>
         /// <param name="translationString"> Перевод слова</param>
