@@ -20,5 +20,12 @@
         /// <param name="wordString">имя слова</param>
         /// <returns>Объект Word или null, если такого слова нет</returns>
         Word GetWord(string wordString);
+
+        /// <summary>
+        /// Получает перевод
+        /// </summary>
+        /// <param name="wordString"></param>
+        /// <returns></returns>
+        string GetTranslation(string wordString);
     }
 }

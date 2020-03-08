@@ -87,5 +87,10 @@ namespace EngProject.Classes
         {
             return WordsList.FirstOrDefault(c => c.Meaning == wordString);
         }
+
+        public string GetTranslation(string wordString)
+        {
+            return WordsList.FirstOrDefault(c => c.Meaning == wordString).Chosen??"Нет перевода";
+        }
     }
 }
