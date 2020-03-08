@@ -117,6 +117,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ResFolder\Dict.txt" />
     <Content Include="ResFolder\short_text.txt" />
   </ItemGroup>
   <ItemGroup>

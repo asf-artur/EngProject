@@ -37,5 +37,11 @@ namespace EngProject.Test
             _textClass.WordsList.Add(new Word(1, String.Empty));
             Assert.AreEqual(_textClass.WordsList.Count, _textClass.WordsList[_textClass.WordsList.Count - 1].Id);
         }
+
+        [Test]
+        public void Проверка_вывода_перевода()
+        {
+            //TODO Сделать этот тест
+        }
     }
 }
