@@ -22,8 +22,18 @@ namespace EngProject.Forms
         private void Form1_Load(object sender, EventArgs e)
         {
             var text = new TextClass();
-            text.GetText();
+            text.LoadText();
             richTextBox1.Text = text.Text;
+        }
+
+        private void richTextBox1_SelectionChanged(object sender, EventArgs e)
+        {
+            label1.Text = richTextBox1.SelectedText;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
