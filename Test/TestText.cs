@@ -16,7 +16,10 @@ namespace EngProject.Test
         private TextClass _textClass;
 
         [SetUp]
-        public void SetUp() => _textClass = new TextClass();
+        public void SetUp()
+        {
+            _textClass = new TextClass();
+        }
 
         [Test]
         public void Проверка_загрузки()
