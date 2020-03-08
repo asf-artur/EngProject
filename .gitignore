@@ -32,3 +32,5 @@ _ReSharper*/
 #Nuget packages folder
 packages/
 /UpgradeLog*.htm
+/EngProject.vshost.exe.config
+/EngProject.vshost.exe.manifest

@@ -25,5 +25,15 @@ namespace EngProject.Forms
             text.GetText();
             richTextBox1.Text = text.Text;
         }
+
+        private void richTextBox1_SelectionChanged(object sender, EventArgs e)
+        {
+            label1.Text = richTextBox1.SelectedText;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
