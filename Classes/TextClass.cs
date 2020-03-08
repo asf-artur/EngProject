@@ -19,7 +19,7 @@ namespace EngProject.Classes
         /// </summary>
         public string Text
         {
-            get => allText;
+            get { return allText; }
         }
 
         private string allText;
@@ -90,7 +90,13 @@ namespace EngProject.Classes
 
         public string GetTranslation(string wordString)
         {
-            return WordsList.FirstOrDefault(c => c.Meaning == wordString).Chosen??"Нет перевода";
+            var word = WordsList.FirstOrDefault(c => c.Meaning == wordString);
+            if (word == null)
+            {
+                return "Нет перевода";
+            }
+
+            return word.Chosen;
         }
     }
 }

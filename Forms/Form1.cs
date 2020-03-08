@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -18,17 +19,21 @@ namespace EngProject.Forms
         {
             InitializeComponent();
         }
-
+        TextClass text = new TextClass();
         private void Form1_Load(object sender, EventArgs e)
         {
-            var text = new TextClass();
             text.LoadText();
             richTextBox1.Text = text.Text;
+            text.WordsList.Add(new Word(0, "software")
+            {
+                Translations = new ObservableCollection<string>() { "Программа"},
+                Chosen = "Программа"
+            });
         }
 
         private void richTextBox1_SelectionChanged(object sender, EventArgs e)
         {
-            label1.Text = richTextBox1.SelectedText;
+           label1.Text =  text.GetTranslation(richTextBox1.SelectedText.Trim());
         }
 
         private void label1_Click(object sender, EventArgs e)
