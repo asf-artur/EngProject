@@ -12,8 +12,18 @@ namespace EngProject.Classes
     class Dictionary
     {
         public List<Word> WordsList;
+        public Dictionary()
+        {
+            WordsList = new List<Word>();
+            LoadFromProgram();
+        }
 
-        public void LoadFromTxt()
+        public Dictionary(List<Word> wordsList)
+        {
+            WordsList = wordsList;
+        }
+
+        public void LoadFromProgram()
         {
             WordsList.Add(
                 new Word(0, "software")
@@ -24,7 +34,7 @@ namespace EngProject.Classes
                         "программный продукт",
                         "софт"
                     },
-                    Chosen = "софт"
+                    CurrentTranslation = "софт"
                 });
             WordsList.Add(
                 new Word(0, "code")
@@ -35,10 +45,10 @@ namespace EngProject.Classes
                         "кодекс",
                         "норма"
                     },
-                    Chosen = "код"
+                    CurrentTranslation = "код"
                 });
         }
-        public Word Get (string s)
+        public Word GetWord (string s)
         {
             foreach (var s1 in WordsList)
             {

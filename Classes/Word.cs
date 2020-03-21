@@ -15,7 +15,7 @@ namespace EngProject.Classes
         /// </summary>
         public string Meaning;
         public ObservableCollection<string> Translations = new ObservableCollection<string>();
-        public string Chosen;
+        public string CurrentTranslation;
         public int Id;
 
         public Word(int paragraph, string meaning)
@@ -27,7 +27,7 @@ namespace EngProject.Classes
 
         public void TranslationAdded(object sender, NotifyCollectionChangedEventArgs e)
         {
-            Chosen = e.NewItems[0].ToString();
+            CurrentTranslation = e.NewItems[0].ToString();
         }
     }
 }

@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Classes\Dictionary.cs" />
     <Compile Include="Classes\ITextClass.cs" />
+    <Compile Include="Classes\WorkWithForms.cs" />
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

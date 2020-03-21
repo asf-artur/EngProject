@@ -28,7 +28,7 @@ namespace EngProject.Test
             var translation = "translation";
             _textClass.WordsList = new ObservableCollection<Word>() { new Word(1, meaning) };
             _textClass.AddTranslation(meaning, translation, 0);
-            Assert.AreEqual(translation, _textClass.WordsList[0].Chosen);
+            Assert.AreEqual(translation, _textClass.WordsList[0].CurrentTranslation);
         }
 
         [Test]

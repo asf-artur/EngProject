@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,22 +19,32 @@ namespace EngProject.Forms
         public Form1()
         {
             InitializeComponent();
+            InitAll();
         }
-        TextClass text = new TextClass();
+
+        private void InitAll()
+        {
+            WorkWithForms.Init(out workWithForms, this, textClass, treeView1, label1);
+        }
+        TextClass textClass = new TextClass();
+        private WorkWithForms workWithForms;
+
+        public void SmthFunc()
+        {
+            treeView1.Nodes.AddRange(workWithForms.GetTreeNodes().ToArray());
+        }
+
+        
         private void Form1_Load(object sender, EventArgs e)
         {
-            text.LoadText();
-            richTextBox1.Text = text.Text;
-            text.WordsList.Add(new Word(0, "software")
-            {
-                Translations = new ObservableCollection<string>() { "Программа"},
-                Chosen = "Программа"
-            });
+            textClass.LoadText();
+            richTextBox1.Text = textClass.Text;
+            SmthFunc();
         }
 
         private void richTextBox1_SelectionChanged(object sender, EventArgs e)
         {
-           label1.Text =  text.GetTranslation(richTextBox1.SelectedText.Trim());
+           //label1.Text =  textClass.GetTranslation(richTextBox1.SelectedText.Trim());
         }
 
         private void label1_Click(object sender, EventArgs e)

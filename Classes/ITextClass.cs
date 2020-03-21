@@ -12,7 +12,7 @@
         /// </summary>
         /// <param name="wordString">Само слово</param>
         /// <param name="translationString">Перевод слова</param>
-        void ChangeTranslation(string wordString, string translationString);
+        void ChangeCurrentTranslation(string wordString, string translationString);
 
         /// <summary>
         /// Получить объект типа Word по его имени

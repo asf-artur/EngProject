@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
@@ -17,17 +18,22 @@ namespace EngProject.Classes
         /// <summary>
         /// Текст одной строкой
         /// </summary>
-        public string Text
-        {
-            get { return allText; }
-        }
+        public string Text;
 
-        private string allText;
+        private Dictionary _dictionary;
+
+        public List<Word> DictionaryWords => _dictionary.WordsList;
+
 
         public TextClass()
         {
+            _dictionary = new Dictionary();
             WordsList = new ObservableCollection<Word>();
-            WordsList.CollectionChanged += WordListAdd;
+            WordsList.CollectionChanged += WordListAddEvent;
+            foreach (var dictionaryWord in DictionaryWords)
+            {
+                WordsList.Add(dictionaryWord);
+            }
         }
 
         /// <summary>
@@ -35,7 +41,7 @@ namespace EngProject.Classes
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void WordListAdd(object sender, NotifyCollectionChangedEventArgs e)
+        public void WordListAddEvent(object sender, NotifyCollectionChangedEventArgs e)
         {
             WordsList[WordsList.Count - 1].Id = WordsList.Count;
         }
@@ -47,7 +53,16 @@ namespace EngProject.Classes
         {
             using (var streamReader = new StreamReader("ResFolder\\short_text.txt", encoding: Encoding.Unicode))
             {
-                allText = streamReader.ReadToEnd();
+                Text = streamReader.ReadToEnd();
+            }
+        }
+
+        public void AddWordAndTranslation(string wordString, string translationString, int paragraph = -1)
+        {
+            var word = DictionaryWords.Find(c => c.Meaning == wordString);
+            if (word == null)
+            {
+                WordsList.Add(word);
             }
         }
 
@@ -57,7 +72,7 @@ namespace EngProject.Classes
         /// <param name="wordString"> Слово</param>
         /// <param name="translationString"> Перевод слова</param>
         /// <param name="paragraph">Номер параграфа</param>
-        public void AddTranslation(string wordString, string translationString, int paragraph)
+        public void AddTranslation(string wordString, string translationString, int paragraph = -1)
         {
             var word = WordsList.ToList().Find(c => c.Meaning == wordString);
             if (word == null)
@@ -73,13 +88,13 @@ namespace EngProject.Classes
         /// </summary>
         /// <param name="wordString">Слово</param>
         /// <param name="translationString">Перевод слова</param>
-        public void ChangeTranslation(string wordString, string translationString)
+        public void ChangeCurrentTranslation(string wordString, string translationString)
         {
             var word = WordsList.ToList().Find(c => c.Meaning == wordString);
             if (word != null)
             {
                 var translation = translationString;
-                word.Chosen = translation;
+                word.CurrentTranslation = translation;
             }
         }
 
@@ -96,7 +111,12 @@ namespace EngProject.Classes
                 return "Нет перевода";
             }
 
-            return word.Chosen;
+            return word.CurrentTranslation;
+        }
+
+        public Word GetWordFromDict(string wordString)
+        {
+            return DictionaryWords.FirstOrDefault(c => c.Meaning == wordString);
         }
     }
 }
